@@ -184,6 +184,10 @@ static ERL_NIF_TERM enif_make_phonenumber_validation_result(ErlNifEnv* env, Phon
             return enif_make_atom(env, "too_short");
         case PhoneNumberUtil::TOO_LONG:
             return enif_make_atom(env, "too_long");
+        case PhoneNumberUtil::IS_POSSIBLE_LOCAL_ONLY:
+            return enif_make_atom(env, "is_possible_local_only");
+        case PhoneNumberUtil::INVALID_LENGTH:
+            return enif_make_atom(env, "invalid_length");
     }
 
     return enif_make_atom(env, "invalid_country_code");
@@ -200,6 +204,8 @@ static ERL_NIF_TERM enif_make_phonenumber_country_code_source(ErlNifEnv* env, Ph
             return enif_make_atom(env, "from_number_without_plus_sign");
         case PhoneNumber::FROM_DEFAULT_COUNTRY:
             return enif_make_atom(env, "from_default_country");
+        case PhoneNumber::UNSPECIFIED:
+            return enif_make_atom(env, "unspecified");
     }
 
     return enif_make_atom(env, "from_default_country");
